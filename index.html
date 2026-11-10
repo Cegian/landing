@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CEGIAN Informática — manutenção, suporte e tecnologia para pequenos negócios.">
+  <title>CEGIAN Informática | Tecnologia que mantém seu negócio funcionando</title>
+  <style>
+    :root{
+      --navy:#071a33;
+      --blue:#0b63ce;
+      --cyan:#18a9e8;
+      --blue2:#0d82d8;
+      --ink:#142033;
+      --muted:#657287;
+      --bg:#f4f7fb;
+      --white:#fff;
+      --line:#dfe6ef;
+      --shadow:0 18px 45px rgba(7,26,51,.10);
+      --radius:22px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--ink); background:var(--bg); line-height:1.55;
+    }
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    .container{width:min(var(--max),calc(100% - 36px));margin:auto}
+
+    /* Header */
+    header{
+      position:fixed;top:0;left:0;right:0;z-index:50;
+      background:rgba(255,255,255,.92);backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(223,230,239,.85);
+    }
+    .nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.4px}
+    .brand-mark{
+      width:39px;height:39px;border-radius:12px;
+      background:linear-gradient(135deg,var(--blue),var(--cyan));
+      display:grid;place-items:center;color:white;font-weight:900;
+      box-shadow:0 8px 20px rgba(11,99,206,.22)
+    }
+    .brand span{font-size:1.05rem}
+    .nav-links{display:flex;gap:25px;align-items:center;font-size:.92rem;font-weight:650;color:#4d5b70}
+    .nav-links a:hover{color:var(--blue)}
+    .nav-cta{background:var(--navy);color:#fff!important;padding:10px 16px;border-radius:11px}
+    .menu{display:none;border:0;background:none;font-size:1.6rem;color:var(--navy)}
+
+    /* Hero */
+    main{padding-top:72px}
+    .hero{padding:72px 0 50px;overflow:hidden;background:
+      radial-gradient(circle at 85% 20%,rgba(24,169,232,.16),transparent 28%),
+      radial-gradient(circle at 10% 80%,rgba(11,99,206,.09),transparent 30%);
+    }
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
+    .eyebrow{
+      display:inline-flex;gap:8px;align-items:center;padding:7px 11px;border-radius:99px;
+      color:var(--blue);background:#e9f4ff;border:1px solid #cfe7fb;
+      font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px
+    }
+    h1{font-size:clamp(2.5rem,5vw,4.7rem);line-height:1.02;letter-spacing:-3px;margin:19px 0}
+    h1 .accent{color:var(--blue)}
+    .hero p{font-size:1.1rem;color:var(--muted);max-width:600px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 18px;border-radius:13px;font-weight:800;transition:.2s}
+    .btn-primary{background:var(--blue);color:white;box-shadow:0 10px 25px rgba(11,99,206,.22)}
+    .btn-primary:hover{transform:translateY(-2px);background:#0757b7}
+    .btn-light{background:#fff;border:1px solid var(--line)}
+    .btn-light:hover{border-color:#b8c9de;transform:translateY(-2px)}
+    .trust-row{display:flex;gap:24px;margin-top:27px;flex-wrap:wrap;color:#5b687a;font-size:.88rem}
+    .trust-row strong{display:block;color:var(--navy);font-size:1rem}
+
+    /* Mosaic */
+    .mosaic{display:grid;grid-template-columns:1.25fr .75fr;grid-template-rows:170px 170px;gap:12px}
+    .photo{overflow:hidden;border-radius:22px;box-shadow:var(--shadow);position:relative;background:#dbe5f0}
+    .photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+    .photo:hover img{transform:scale(1.04)}
+    .photo.main{grid-row:1 / 3}
+    .photo-label{position:absolute;left:14px;bottom:14px;background:rgba(7,26,51,.78);color:white;padding:8px 11px;border-radius:10px;font-size:.78rem;font-weight:700;backdrop-filter:blur(6px)}
+    .tech-card{
+      border-radius:22px;background:linear-gradient(145deg,#071a33,#0d467e);
+      color:white;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;
+      box-shadow:var(--shadow);position:relative;overflow:hidden
+    }
+    .tech-card:before{content:"";position:absolute;width:140px;height:140px;border:1px solid rgba(255,255,255,.17);border-radius:50%;right:-45px;top:-45px}
+    .tech-card .icon{font-size:1.7rem;margin-bottom:16px}
+    .tech-card h3{font-size:1.1rem}
+    .tech-card p{font-size:.82rem;color:#c9d8e8;margin-top:5px}
+
+    /* Generic sections */
+    section{padding:82px 0}
+    .section-head{max-width:720px;margin-bottom:38px}
+    .section-kicker{font-size:.76rem;text-transform:uppercase;letter-spacing:1.4px;color:var(--blue);font-weight:900}
+    h2{font-size:clamp(2rem,3.5vw,3rem);letter-spacing:-1.7px;line-height:1.08;margin:8px 0 12px}
+    .section-head p{color:var(--muted);font-size:1.02rem}
+
+    /* Services */
+    .services{background:#fff}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .service-card{
+      background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;
+      transition:.22s;box-shadow:0 8px 24px rgba(7,26,51,.045)
+    }
+    .service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#c7dff4}
+    .service-icon{width:44px;height:44px;border-radius:13px;background:#eaf4ff;color:var(--blue);display:grid;place-items:center;font-size:1.25rem;margin-bottom:17px}
+    .service-card h3{font-size:1.04rem;margin-bottom:7px}
+    .service-card p{font-size:.9rem;color:var(--muted)}
+
+    .recurring{
+      margin-top:20px;padding:27px;border-radius:22px;
+      background:linear-gradient(135deg,#081b35,#0b4e8f);color:#fff;
+      display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center
+    }
+    .recurring h3{font-size:1.35rem;margin-bottom:5px}
+    .recurring p{color:#c8d8ea;font-size:.92rem;max-width:760px}
+    .pill{white-space:nowrap;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.08);padding:11px 14px;border-radius:13px;font-weight:800}
+
+    /* Benefits */
+    .benefits{background:var(--bg)}
+    .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .benefit{padding:26px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 22px rgba(7,26,51,.04)}
+    .benefit-number{font-size:.75rem;font-weight:900;color:var(--blue);letter-spacing:1px}
+    .benefit h3{margin:10px 0 8px}
+    .benefit p{font-size:.9rem;color:var(--muted)}
+
+    /* Price */
+    .pricing{background:#fff}
+    .price-box{
+      border:1px solid #cfe1f3;border-radius:26px;background:
+      linear-gradient(135deg,#f5faff,#fff);
+      box-shadow:var(--shadow);padding:38px;display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center
+    }
+    .price-tag{font-size:clamp(3rem,6vw,5rem);font-weight:900;line-height:.95;letter-spacing:-3px;color:var(--navy)}
+    .price-tag small{font-size:1rem;letter-spacing:0;color:var(--muted);font-weight:700}
+    .price-note{color:var(--muted);margin-top:11px}
+    .included{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+    .included span{font-size:.86rem;color:#4e5d70}
+    .included span:before{content:"✓";color:var(--blue);font-weight:900;margin-right:8px}
+    .price-side{background:var(--navy);color:#fff;border-radius:19px;padding:25px}
+    .price-side h3{margin-bottom:8px}
+    .price-side p{color:#c8d8ea;font-size:.9rem}
+
+    /* Contact */
+    .contact{background:linear-gradient(180deg,#f4f7fb,#eaf1f8)}
+    .contact-wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:25px;align-items:stretch}
+    .contact-brand,.contact-info{background:#fff;border:1px solid var(--line);border-radius:23px;box-shadow:0 10px 28px rgba(7,26,51,.05)}
+    .contact-brand{padding:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+    .contact-brand img{width:230px;max-width:85%;height:auto;border-radius:12px}
+    .contact-brand p{color:var(--muted);font-size:.9rem;margin-top:16px}
+    .contact-info{padding:30px}
+    .contact-list{display:grid;gap:13px;margin-top:20px}
+    .contact-item{display:flex;gap:14px;align-items:flex-start;padding:15px;border-radius:15px;background:#f7f9fc}
+    .contact-item .ci{width:39px;height:39px;flex:0 0 39px;border-radius:11px;background:#e6f2ff;color:var(--blue);display:grid;place-items:center;font-weight:900}
+    .contact-item strong{display:block;font-size:.88rem}
+    .contact-item span,.contact-item a{color:var(--muted);font-size:.9rem}
+    .contact-item a:hover{color:var(--blue)}
+
+    footer{background:var(--navy);color:#aebed0;padding:27px 0}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:.82rem}
+    .footer-inner strong{color:#fff}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(18px);transition:.65s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:900px){
+      .nav-links{display:none}
+      .menu{display:block}
+      .hero-grid,.price-box,.contact-wrap{grid-template-columns:1fr}
+      .hero{padding-top:50px}
+      .mosaic{max-width:720px}
+      .service-grid,.benefit-grid{grid-template-columns:1fr 1fr}
+      .recurring{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      .container{width:min(var(--max),calc(100% - 24px))}
+      section{padding:62px 0}
+      h1{letter-spacing:-2px}
+      .mosaic{grid-template-columns:1fr 1fr;grid-template-rows:155px 155px}
+      .photo.main{grid-row:1 / 3}
+      .service-grid,.benefit-grid{grid-template-columns:1fr}
+      .included{grid-template-columns:1fr}
+      .price-box{padding:26px}
+      .footer-inner{flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#inicio" aria-label="CEGIAN Informática">
+      <span class="brand-mark">C</span><span>CEGIAN Informática</span>
+    </a>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#precos">Preços</a>
+      <a href="#contatos">Contatos</a>
+      <a class="nav-cta" href="https://wa.me/5511992923690" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+    <button class="menu" aria-label="Abrir menu" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">Tecnologia para pequenos negócios</span>
+        <h1>Seu negócio funcionando. <span class="accent">Sem complicação.</span></h1>
+        <p>
+          Manutenção, melhoria de desempenho e suporte em informática para lojas,
+          padarias, restaurantes, bazares, escritórios e prestadores de serviço.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/5511992923690?text=Olá!%20Gostaria%20de%20conhecer%20os%20serviços%20da%20CEGIAN%20Informática." target="_blank" rel="noopener">💬 Solicitar atendimento</a>
+          <a class="btn btn-light" href="#servicos">Conhecer serviços →</a>
+        </div>
+        <div class="trust-row">
+          <div><strong>Avulso ou mensal</strong>Atendimento conforme sua necessidade</div>
+          <div><strong>A partir de R$ 39,90</strong>Pacotes mensais</div>
+        </div>
+      </div>
+
+      <div class="mosaic reveal">
+        <div class="photo main">
+          <img src="assets/Tecnico_conversando.jfif" alt="Atendimento e suporte em informática">
+          <span class="photo-label">Suporte técnico</span>
+        </div>
+        <div class="photo">
+          <img src="assets/portfolio4.jfif" alt="Equipamento de tecnologia em atendimento técnico">
+          <span class="photo-label">Tecnologia</span>
+        </div>
+        <div class="tech-card">
+          <div class="icon">⚙️</div>
+          <h3>Manutenção preventiva</h3>
+          <p>Cuide dos equipamentos antes que eles parem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="servicos">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-kicker">O que fazemos</span>
+        <h2>Serviços de informática para o dia a dia.</h2>
+        <p>Da manutenção pontual ao acompanhamento contínuo dos computadores e dispositivos do seu negócio.</p>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-card reveal"><div class="service-icon">💻</div><h3>Formatação</h3><p>Formatação e preparação de computadores e notebooks para voltar a trabalhar com estabilidade.</p></article>
+        <article class="service-card reveal"><div class="service-icon">🚀</div><h3>Upgrade de equipamentos</h3><p>Indicação e instalação de melhorias para aumentar a capacidade e a vida útil do equipamento.</p></article>
+        <article class="service-card reveal"><div class="service-icon">📈</div><h3>Melhoria de desempenho</h3><p>Diagnóstico de lentidão, ajustes e avaliação dos principais pontos que afetam o desempenho.</p></article>
+        <article class="service-card reveal"><div class="service-icon">🧩</div><h3>Instalação de softwares</h3><p>Instalação e configuração de programas necessários para a operação do negócio.</p></article>
+        <article class="service-card reveal"><div class="service-icon">🔧</div><h3>Manutenção de hardware</h3><p>Manutenção e diagnóstico de componentes, periféricos e equipamentos de informática.</p></article>
+        <article class="service-card reveal"><div class="service-icon">🛠️</div><h3>Configurações gerais</h3><p>Wi-Fi, impressoras, dispositivos e ajustes necessários para deixar o ambiente funcionando.</p></article>
+      </div>
+
+      <div class="recurring reveal">
+        <div><h3>Pacotes mensais de suporte</h3><p>Uma forma simples de manter os equipamentos acompanhados, com limpeza, segurança, desempenho, backup, instalação de softwares e configurações gerais.</p></div>
+        <div class="pill">A partir de R$ 39,90 / mês</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits" id="beneficios">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-kicker">Por que contratar?</span>
+        <h2>Mais prevenção. Menos surpresa.</h2>
+        <p>O acompanhamento recorrente ajuda o pequeno negócio a evitar problemas que podem interromper a operação.</p>
+      </div>
+      <div class="benefit-grid">
+        <article class="benefit reveal"><div class="benefit-number">01 / BACKUP</div><h3>Proteção dos arquivos</h3><p>Backup constante de arquivos importantes, reduzindo o risco de perda de dados essenciais para o negócio.</p></article>
+        <article class="benefit reveal"><div class="benefit-number">02 / PREVENÇÃO</div><h3>Menos indisponibilidade</h3><p>Avaliações periódicas de desempenho e armazenamento ajudam a identificar sinais de problemas antes que eles parem a máquina.</p></article>
+        <article class="benefit reveal"><div class="benefit-number">03 / CONSULTORIA</div><h3>Orientação constante</h3><p>A cada visita, o cliente pode tirar dúvidas e receber orientação sobre o funcionamento dos equipamentos.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="precos">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-kicker">Investimento</span>
+        <h2>Um cuidado que cabe no orçamento.</h2>
+        <p>Os serviços são cobrados de acordo com o mercado. Para os pacotes mensais, o plano inicial parte de:</p>
+      </div>
+      <div class="price-box reveal">
+        <div>
+          <div class="price-tag">R$ 39,90 <small>/ mês</small></div>
+          <p class="price-note">Valor mínimo para pacote mensal. O atendimento pode ser ajustado às necessidades de cada negócio.</p>
+          <div class="included">
+            <span>Limpeza física</span><span>Varredura de segurança</span>
+            <span>Avaliação de desempenho</span><span>Avaliação de HD / SSD</span>
+            <span>Instalação de softwares</span><span>Configurações gerais</span>
+            <span>Backup de arquivos</span><span>Acompanhamento técnico</span>
+          </div>
+        </div>
+        <aside class="price-side">
+          <h3>Precisa de algo pontual?</h3>
+          <p>Também realizamos serviços avulsos, como formatação, upgrade, instalação de software e manutenção de hardware.</p>
+          <a class="btn btn-primary" style="margin-top:18px;background:#18a9e8" href="https://wa.me/5511992923690" target="_blank" rel="noopener">Pedir orçamento</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contatos">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-kicker">Fale com a CEGIAN</span>
+        <h2>Vamos manter sua tecnologia funcionando.</h2>
+        <p>Entre em contato para tirar dúvidas, solicitar atendimento ou conhecer os pacotes mensais.</p>
+      </div>
+      <div class="contact-wrap">
+        <div class="contact-brand reveal">
+          <img src="assets/logo.jpeg" alt="Logomarca CEGIAN Informática">
+          <p>Serviços em informática para empresas e profissionais de Suzano e região.</p>
+        </div>
+        <div class="contact-info reveal">
+          <div class="contact-list">
+            <div class="contact-item"><div class="ci">☎</div><div><strong>WhatsApp</strong><a href="https://wa.me/5511992923690" target="_blank" rel="noopener">(11) 99292-3690</a></div></div>
+            <div class="contact-item"><div class="ci">✉</div><div><strong>E-mail</strong><a href="mailto:cegiantecnologia@gmail.com">cegiantecnologia@gmail.com</a></div></div>
+            <div class="contact-item"><div class="ci">▶</div><div><strong>YouTube</strong><a href="https://www.youtube.com/@cegiantecnologia1293" target="_blank" rel="noopener">@cegiantecnologia1293</a></div></div>
+            <div class="contact-item"><div class="ci">⌖</div><div><strong>Endereço</strong><span>Rua Lino Ferri, 74 — Jardim Planalto, Suzano — SP</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div><strong>CEGIAN Informática</strong> — tecnologia para pequenos negócios.</div>
+    <div>© <span id="year"></span> CEGIAN Informática</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, {threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
